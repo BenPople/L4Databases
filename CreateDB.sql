@@ -12,8 +12,7 @@ CREATE TABLE Books (
     title VARCHAR(50) NOT NULL,
     author_id INT NOT NULL,
     genre VARCHAR(50),
-    publication_year INT,
-    FOREIGN KEY (author_id) REFERENCES Author(author_id)
+    publication_year INT
 );
 
 CREATE TABLE CoAuthor (
