@@ -7,6 +7,15 @@ CREATE TABLE Author (
     name VARCHAR(50) NOT NULL
 );
 
+CREATE TABLE Books (
+    book_id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(50) NOT NULL,
+    author_id INT NOT NULL,
+    genre VARCHAR(50),
+    publication_year INT,
+    FOREIGN KEY (author_id) REFERENCES Author(author_id)
+);
+
 CREATE TABLE CoAuthor (
     coauthor_id INT PRIMARY KEY AUTO_INCREMENT,
     author_id INT NOT NULL,
@@ -15,13 +24,10 @@ CREATE TABLE CoAuthor (
     FOREIGN KEY (book_id) REFERENCES Books(book_id)
 );
 
-CREATE TABLE Books (
-    book_id INT PRIMARY KEY AUTO_INCREMENT,
-    title VARCHAR(50) NOT NULL,
-    author_id INT NOT NULL,
-    genre VARCHAR(50),
-    publication_year INT,
-    FOREIGN KEY (author_id) REFERENCES Author(author_id)
+CREATE TABLE Borrowers (
+    borrower_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE LoanedBook (
@@ -40,8 +46,3 @@ CREATE TABLE Loans (
     FOREIGN KEY (loanedbook_id) REFERENCES LoanedBook(loanedbook_id)
 );
 
-CREATE TABLE Borrowers (
-    borrower_id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(50) NOT NULL,
-    email VARCHAR(50) NOT NULL
-);
